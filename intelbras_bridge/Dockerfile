@@ -28,10 +28,16 @@ RUN pip3 install --no-cache-dir paho-mqtt --break-system-packages
 # Opción 2: O usar el paquete de Alpine directamente (comentado)
 # RUN apk add --no-cache py3-paho-mqtt
 
-# Instalar bashio
+# Instalar Bashio com stub para trace.sh
 RUN mkdir -p /usr/lib/bashio && \
     curl -sSL https://raw.githubusercontent.com/hassio-addons/bashio/main/lib/bashio.sh -o /usr/lib/bashio/bashio.sh && \
-    chmod +x /usr/lib/bashio/bashio.sh
+    chmod +x /usr/lib/bashio/bashio.sh && \
+    # Criar trace.sh vazio para evitar erro
+    cat << 'EOF' > /usr/lib/bashio/trace.sh
+#!/usr/bin/with-contenv bashio
+# Stub para módulo trace removido
+EOF && \
+    chmod +x /usr/lib/bashio/trace.sh
 
 # Clonar el proyecto
 # La ruta /alarme-intelbras es correcta
