@@ -30,7 +30,7 @@ RUN pip3 install --no-cache-dir paho-mqtt --break-system-packages
 
 # Instalar bashio
 RUN mkdir -p /usr/lib/bashio && \
-    curl -sSL https://raw.githubusercontent.com/hassio-addons/bashio/main/lib/bashio.sh -o /usr/lib/bashio/bashio.sh && \
+    curl -sSL https://raw.githubusercontent.com/lmagyar/bashio/main/lib/bashio.sh -o /usr/lib/bashio/bashio.sh && \
     chmod +x /usr/lib/bashio/bashio.sh
 
 # Clonar el proyecto
