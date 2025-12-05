@@ -28,11 +28,9 @@ RUN pip3 install --no-cache-dir paho-mqtt --break-system-packages
 # Opción 2: O usar el paquete de Alpine directamente (comentado)
 # RUN apk add --no-cache py3-paho-mqtt
 
-# Instalar Bashio com stub para trace.sh
+# Instalar bashio
 RUN mkdir -p /usr/lib/bashio && \
     curl -sSL https://raw.githubusercontent.com/hassio-addons/bashio/main/lib/bashio.sh -o /usr/lib/bashio/bashio.sh && \
-    # Comentar a linha do trace.sh
-    sed -i 's|source /usr/lib/bashio/trace.sh|# source /usr/lib/bashio/trace.sh|' /usr/lib/bashio/bashio.sh && \
     chmod +x /usr/lib/bashio/bashio.sh
 
 # Clonar el proyecto
